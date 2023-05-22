@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+    export let data;
+    const { articles } = data;
+</script>
+
+{#each articles as article}
+    <div>
+        <h3>{article.id}</h3>
+        <p>{article.content}</p>
+    </div>
+{/each}
