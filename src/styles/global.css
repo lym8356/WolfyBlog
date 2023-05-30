@@ -10,3 +10,20 @@
     -o-background-size: cover;
     background-size: cover;
   }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .markdown-nav-link[data-toc-link-current=true]{
+    color: #F5F5F5;
+}

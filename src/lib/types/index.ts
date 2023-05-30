@@ -17,6 +17,18 @@ export type Article = {
     createdAt: Date | null;
     updatedAt: Date | null;
     isDraft: boolean;
+    comments: Comment[];
+}
+
+export type Comment = {
+    id: string;
+    content: string;
+    createdAt: Date | null;
+    commenterUsername: string;
+    commenterEmail: string;
+    parentCommentId: string;
+    replyToArticleId: string;
+    replies: Comment[];
 }
 
 export type Fetch = (

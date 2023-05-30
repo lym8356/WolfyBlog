@@ -9,14 +9,14 @@
     } from "flowbite-svelte";
 </script>
 
-<Footer footerType="socialmedia" class="rounded-none !bg-primary-800 sm:p-5">
+<Footer footerType="socialmedia" class="rounded-none !bg-primary-900 sm:p-5">
     <div class="md:flex md:justify-around">
         <div class="mb-6 md:mb-0 flex">
             <FooterBrand
                 imgClass="h-16 mr-3"
                 spanClass="self-center text-4xl font-semibold whitespace-nowrap text-textPrimary-400"
                 href="#"
-                src="./images/logo.png"
+                src="/images/logo.png"
                 alt="WolfyBlog Logo"
                 name="WolfyBlog"
             />

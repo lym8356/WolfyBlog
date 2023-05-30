@@ -1,4 +1,4 @@
-import type { Fetch } from "./types";
+import type { Fetch } from "../types";
 
 let url = "http://localhost:21777/api";
 
