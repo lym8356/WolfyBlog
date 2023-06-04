@@ -73,7 +73,7 @@
         />
     </div>
     <!-- other info container  -->
-    <div class="md:w-1/3 md:flex flex-col gap-3 hidden">
+    <div class="w-1/3 md:flex flex-col gap-3 hidden">
         <Card
             class="max-w-2xl w-full !bg-primary-900 border-transparent hover:bg-primary-800 p-2 !pb-0"
         >
@@ -138,9 +138,9 @@
         <Card
             class="max-w-2xl w-full !bg-primary-900 border-transparent hover:bg-primary-800 py-2 mb-2"
         >
-            <div class="flex space-x-2">
+            <div class="flex lg:space-x-2">
                 {#each tags as tag}
-                    <Badge large color="dark" class="w-1/4">{tag.title}</Badge>
+                    <Badge large color="dark" class="w-1/4 md:w-1/5">{tag.title}</Badge>
                 {/each}
             </div>
         </Card>

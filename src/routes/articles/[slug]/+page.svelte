@@ -1,18 +1,14 @@
 <script lang="ts">
 	export let data;
 	import "prismjs/themes/prism-okaidia.min.css";
-	import { toc, createTocStore } from "@svelte-put/toc";
-	// import Toc from 'svelte-toc';
-	import MarkDownNav from "../../../components/MarkDownNav.svelte";
+	import Toc from 'svelte-toc';
 	import SingleComment from "../../../components/Comment/Comment.svelte";
-	import type { Comment } from "$lib/types";
     import { Pagination } from "flowbite-svelte";
     import CommentBox from "../../../components/Comment/CommentBox.svelte";
 
-	const tocStore = createTocStore();
 	const { article, comments } = data;
 
-	// only show comments not replies
+	// only show main comments not replies
 	let mainComments = comments.filter((c) => c.parentCommentId == null);
 </script>
 
@@ -23,11 +19,6 @@
 		<div class="w-full p-4">
 			<div
 				class="prose prose-invert lg:prose-lg max-w-none text-justify text-textPrimary-400 prose-headings:text-textPrimary-200"
-				use:toc={{
-					store: tocStore,
-					observe: { threshold: 0.4 },
-					anchor: false,
-				}}
 			>
 				{@html article.content}
 			</div>
@@ -35,7 +26,7 @@
 		<hr class="border-dashed border-textPrimary-400" />
 		<CommentBox />
 		<div class="py-4 lg:py-8 antialiased mx-auto max-w-screen-md space-y-4">
-			<h3 class="mb-4 text-lg font-semibold text-textPrimary-400">
+			<h3 class="mb-4 text-lg font-semibold text-textPrimary-400 toc-exclude">
 				{comments.length}
 				{comments.length == 1 ? "Comment" : "Comments"}
 			</h3>
@@ -56,8 +47,22 @@
 		</div>
 	</section>
 	<section
-		class="basis-1/3 lg:block fixed top-1/4 right-10 max-h-96 overflow-y-auto hidden"
+		class="basis-1/3 fixed top-40 right-14"
 	>
-		<MarkDownNav {tocStore} />
+		<Toc
+			title = ""
+			--toc-max-height = "50vh"
+			--toc-desktop-max-width = "15vw"
+			--toc-li-color = "#FFD966"
+			--toc-li-hover-color = "#FFF9E6"
+			--toc-active-color = "#FFF9E6"
+			--toc-active-bg = "#1C1C1E"
+			--toc-mobile-bg = "#404040"
+			--toc-mobile-btn-bg = "#FFD966"
+		/>
 	</section>
 </div>
+
+<style>
+
+</style>

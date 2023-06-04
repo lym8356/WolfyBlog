@@ -31,6 +31,12 @@ export type Comment = {
     replies: Comment[];
 }
 
+export type AboutPage = {
+    id: number;
+    content: string;
+    isAboutSite: boolean;
+}
+
 export type Fetch = (
     input: RequestInfo | URL,
     init?: RequestInit

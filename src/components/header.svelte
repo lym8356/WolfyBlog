@@ -11,9 +11,11 @@
         Chevron,
     } from "flowbite-svelte";
     import MdiTools from "virtual:icons/mdi/tools";
+    import CustomDrawer from "./CustomDrawer.svelte";
+    let hideDrawer = true;
 </script>
 
-<Navbar let:hidden let:toggle class="!bg-primary-900">
+<Navbar let:hidden class="!bg-primary-900">
     <NavBrand href="/">
         <img
             src="/images/logo.png"
@@ -31,7 +33,7 @@
             ><MdiTools class="text-textPrimary-400 text-2xl" /></Button
         >
         <NavHamburger
-            on:click={toggle}
+            on:click={() => hideDrawer = !hideDrawer}
             btnClass="md:hidden bg-textPrimary-400"
         />
     </div>
@@ -39,7 +41,7 @@
         {hidden}
         nonActiveClass="text-textPrimary-300 text-lg rounded-lg hover:underline"
         activeClass="text-textPrimary-800 text-lg underline"
-        ulClass="flex flex-col p-4 mt-4 md:flex-row md:space-x-14 md:mt-0 md:text-sm md:font-medium bg-primary-900 md:border-none border-textPrimary-800 order-1"
+        class="order-1 flex-1 justify-evenly lg:mx-20"
     >
         <NavLi href="/" active={true}>Home</NavLi>
         <NavLi id="nav-article"><Chevron aligned>Articles</Chevron></NavLi>
@@ -55,3 +57,5 @@
         </Dropdown>
     </NavUl>
 </Navbar>
+
+<CustomDrawer {hideDrawer} />

@@ -24,7 +24,7 @@
         <div class="grid grid-cols-2 gap-8 sm:gap-14 md:grid-cols-3 md:w-1/3">
             <div>
                 <h2
-                    class="mb-5 text-md font-semibold text-textPrimary-400 uppercase"
+                    class="mb-5 text-md font-semibold text-textPrimary-400 uppercase toc-exclude"
                 >
                     Quick Links
                 </h2>
@@ -39,7 +39,7 @@
             </div>
             <div>
                 <h2
-                    class="mb-5 text-md font-semibold text-textPrimary-400 uppercase"
+                    class="mb-5 text-md font-semibold text-textPrimary-400 uppercase toc-exclude"
                 >
                     Site
                 </h2>
@@ -53,7 +53,7 @@
             </div>
             <div>
                 <h2
-                    class="mb-5 text-md font-semibold text-textPrimary-400 uppercase"
+                    class="mb-5 text-md font-semibold text-textPrimary-400 uppercase toc-exclude"
                 >
                     Social
                 </h2>

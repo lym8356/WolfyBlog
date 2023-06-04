@@ -24,6 +24,3 @@
     text-align: center;
   }
 
-  .markdown-nav-link[data-toc-link-current=true]{
-    color: #F5F5F5;
-}
