@@ -31,6 +31,14 @@ export type Comment = {
     replies: Comment[];
 }
 
+export type Project = {
+    id: number;
+    title: string;
+    description: string;
+    link: string;
+    cover: string;
+}
+
 export type AboutPage = {
     id: number;
     content: string;
