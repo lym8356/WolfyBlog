@@ -31,6 +31,12 @@ export type Comment = {
     replies: Comment[];
 }
 
+export type SiteLog = {
+    id: number;
+    description: string;
+    dateAdded: Date;
+}
+
 export type Project = {
     id: number;
     title: string;

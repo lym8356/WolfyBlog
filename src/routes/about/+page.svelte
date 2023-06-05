@@ -10,7 +10,7 @@
     </p>
 </div>
 
-<div class="mx-auto max-w-screen-lg mt-8 mb-8">
+<div class="mx-auto max-w-screen-xl mt-8 mb-8">
     <Tabs
         style="full"
         contentClass="mt-4"
@@ -46,6 +46,6 @@
 
 <style>
     .prose {
-        max-width: 100ch;
+        max-width: 100%;
     }
 </style>
