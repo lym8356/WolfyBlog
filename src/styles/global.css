@@ -24,3 +24,17 @@
     text-align: center;
   }
 
+.svelte-lightbox-body {
+  width: 80vw !important;
+  height: 80vh !important;
+}
+
+.svelte-lightbox-body img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+  .svelte-lightbox-body .next-button {
+    width: auto !important;
+}

@@ -13,7 +13,7 @@
 </script>
 
 <Card
-    href="/articles/{article.id}"
+    href="/article/{article.id}"
     class="w-full !bg-primary-900 border-transparent hover:bg-primary-800 max-w-4xl"
     size="lg"
 >

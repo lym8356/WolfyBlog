@@ -12,6 +12,7 @@
     } from "flowbite-svelte";
     import MdiTools from "virtual:icons/mdi/tools";
     import CustomDrawer from "./CustomDrawer.svelte";
+    import { adminSiteUrl, navigationLinks, siteName } from "$lib/constant/constant";
     let hideDrawer = true;
 </script>
 
@@ -25,15 +26,15 @@
         <span
             class="self-center whitespace-nowrap sm:text-3xl text-textPrimary-400 font-semibold dark:text-white text-xl"
         >
-            WolfyBlog
+            {siteName}
         </span>
     </NavBrand>
     <div class="flex md:order-2">
-        <Button size="sm" btnClass="mr-1"
-            ><MdiTools class="text-textPrimary-400 text-2xl" /></Button
-        >
+        <Button size="sm" btnClass="mr-1" href={adminSiteUrl}
+            ><MdiTools class="text-textPrimary-400 text-2xl" />
+        </Button>
         <NavHamburger
-            on:click={() => hideDrawer = !hideDrawer}
+            on:click={() => (hideDrawer = !hideDrawer)}
             btnClass="md:hidden bg-textPrimary-400"
         />
     </div>
@@ -43,13 +44,15 @@
         activeClass="text-textPrimary-800 text-lg underline"
         class="order-1 flex-1 justify-evenly lg:mx-20"
     >
-        <NavLi href="/" active={true}>Home</NavLi>
-        <NavLi id="nav-article"><Chevron aligned>Articles</Chevron></NavLi>
-        <NavLi href="/album">Albums</NavLi>
-        <NavLi href="/comment">Comments</NavLi>
-        <NavLi href="/siteLog">Site Logs</NavLi>
-        <NavLi href="/project">Projects</NavLi>
-        <NavLi href="/about">About</NavLi>
+        <NavLi href="/" active={true}>{navigationLinks.Home}</NavLi>
+        <NavLi id="nav-article"
+            ><Chevron aligned>{navigationLinks.Articles}</Chevron></NavLi
+        >
+        <NavLi href="/album">{navigationLinks.Albums}</NavLi>
+        <NavLi href="/comment">{navigationLinks.Comments}</NavLi>
+        <NavLi href="/siteLog">{navigationLinks.SiteLogs}</NavLi>
+        <NavLi href="/project">{navigationLinks.Projects}</NavLi>
+        <NavLi href="/about">{navigationLinks.About}</NavLi>
         <Dropdown triggeredBy="#nav-article">
             <DropdownItem>Search Articles</DropdownItem>
             <DropdownItem>Search By Category</DropdownItem>

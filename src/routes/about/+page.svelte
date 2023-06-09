@@ -1,16 +1,14 @@
 <script lang="ts">
     import { TabItem, Tabs } from "flowbite-svelte";
+    import CustomTitle from "../../components/CustomTitle.svelte";
+    import { navigationLinks } from "$lib/constant/constant";
 
     export let data;
 </script>
 
-<div class="flex items-center justify-center h-half-screen">
-    <p class="md:w-2/3 text-textPrimary-100 md:text-7xl text-5xl">
-        About
-    </p>
-</div>
+<CustomTitle titleString={navigationLinks.About} />
 
-<div class="mx-auto max-w-screen-xl mt-8 mb-8">
+<div class="mx-auto max-w-screen-lg mt-8 mb-8">
     <Tabs
         style="full"
         contentClass="mt-4"

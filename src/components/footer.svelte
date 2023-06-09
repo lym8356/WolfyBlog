@@ -1,4 +1,5 @@
 <script>
+    import { gitHub, navigationLinks, siteGitHub, youtube } from "$lib/constant/constant";
     import {
         Footer,
         FooterCopyright,
@@ -31,9 +32,9 @@
                 <FooterLinkGroup
                     class="items-center text-sm text-textPrimary-200 sm:mb-0 mt-2 lg:mt-0 md:mt-0"
                 >
-                    <FooterLink liClass="mb-2" href="/">Articles</FooterLink>
-                    <FooterLink liClass="mb-2" href="/">Albums</FooterLink>
-                    <FooterLink liClass="mb-2" href="/">Comments</FooterLink>
+                    <FooterLink liClass="mb-2" href="/article">{navigationLinks.Articles}</FooterLink>
+                    <FooterLink liClass="mb-2" href="/album">{navigationLinks.Albums}</FooterLink>
+                    <FooterLink liClass="mb-2" href="/comment">{navigationLinks.Comments}</FooterLink>
                     <FooterLink href="/">Projects</FooterLink>
                 </FooterLinkGroup>
             </div>
@@ -46,9 +47,9 @@
                 <FooterLinkGroup
                     class="items-center text-sm text-textPrimary-200 sm:mb-0 mt-2 lg:mt-0 md:mt-0"
                 >
-                    <FooterLink liClass="mb-2" href="/">Home</FooterLink>
-                    <FooterLink liClass="mb-2" href="/">About</FooterLink>
-                    <FooterLink href="/">Site Logs</FooterLink>
+                    <FooterLink liClass="mb-2" href="/">{navigationLinks.Home}</FooterLink>
+                    <FooterLink liClass="mb-2" href="/about">{navigationLinks.About}</FooterLink>
+                    <FooterLink href="/siteLog">{navigationLinks.SiteLogs}</FooterLink>
                 </FooterLinkGroup>
             </div>
             <div>
@@ -60,8 +61,8 @@
                 <FooterLinkGroup
                     class="items-center text-sm text-textPrimary-200 sm:mb-0 mt-2 lg:mt-0 md:mt-0"
                 >
-                    <FooterLink liClass="mb-2" href="/">Github</FooterLink>
-                    <FooterLink href="/">Youtube</FooterLink>
+                    <FooterLink liClass="mb-2" href={gitHub}>Github</FooterLink>
+                    <FooterLink href={youtube}>Youtube</FooterLink>
                 </FooterLinkGroup>
             </div>
         </div>
@@ -70,7 +71,7 @@
         class="my-6 border-textPrimary-500 sm:mx-auto dark:border-gray-700 lg:my-4 sm:my-6"
     />
     <A
-        href="https://github.com/lym8356/WolfBlog"
+        href={siteGitHub}
         aClass="block text-xs text-center text-textPrimary-400 hover:underline"
         >Source Code</A
     >

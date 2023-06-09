@@ -20,6 +20,20 @@ export type Article = {
     comments: Comment[];
 }
 
+export type Album = {
+    id: number;
+    title: string;
+    description: string;
+    cover: string;
+    albumPhotos: Photo[];
+}
+
+export type Photo = {
+    id: string;
+    publicId: string;
+    url: string;
+}
+
 export type Comment = {
     id: string;
     content: string;
