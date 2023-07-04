@@ -48,15 +48,15 @@
         <NavLi id="nav-article"
             ><Chevron aligned>{navigationLinks.Articles}</Chevron></NavLi
         >
-        <NavLi href="/album">{navigationLinks.Albums}</NavLi>
-        <NavLi href="/comment">{navigationLinks.Comments}</NavLi>
-        <NavLi href="/siteLog">{navigationLinks.SiteLogs}</NavLi>
-        <NavLi href="/project">{navigationLinks.Projects}</NavLi>
+        <NavLi href="/albums">{navigationLinks.Albums}</NavLi>
+        <NavLi href="/comments">{navigationLinks.Comments}</NavLi>
+        <NavLi href="/siteLogs">{navigationLinks.SiteLogs}</NavLi>
+        <NavLi href="/projects">{navigationLinks.Projects}</NavLi>
         <NavLi href="/about">{navigationLinks.About}</NavLi>
-        <Dropdown triggeredBy="#nav-article">
-            <DropdownItem>Search Articles</DropdownItem>
-            <DropdownItem>Search By Category</DropdownItem>
-            <DropdownItem>Search By Tags</DropdownItem>
+        <Dropdown triggeredBy="#nav-article" class="bg-primary-900 text-textPrimary-200">
+            <DropdownItem class="hover:bg-primary-800" href="/articles">Search Articles</DropdownItem>
+            <DropdownItem class="hover:bg-primary-800" href="/articles/categories">Search By Category</DropdownItem>
+            <DropdownItem class="hover:bg-primary-800" href="/articles/tags">Search By Tags</DropdownItem>
         </Dropdown>
     </NavUl>
 </Navbar>

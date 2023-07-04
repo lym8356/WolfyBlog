@@ -6,6 +6,7 @@ export type Tag = {
 export type Category = {
     id: number;
     title: string;
+    articleCount: number;
 }
 
 export type Article = {
@@ -69,3 +70,17 @@ export type Fetch = (
     input: RequestInfo | URL,
     init?: RequestInit
 ) => Promise<Response>
+
+export type FetchResponse = {
+    data: any,
+    headers: Headers,
+}
+
+export type PaginationHeaderData = {
+    previousPageLink: string | null;
+    nextPageLink: string | null;
+    totalCount: number;
+    pageSize: number;
+    currentPage: number;
+    totalPages: number;
+}

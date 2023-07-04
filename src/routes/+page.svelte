@@ -1,14 +1,13 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import { wolfPoems } from "../lib/constant/poem";
-    import type { Article } from "../lib/types";
     import CustomCard from "../components/CustomCard.svelte";
-    import { Avatar, Card, A, Badge, Pagination } from "flowbite-svelte";
+    import { Avatar, Card, A, Badge } from "flowbite-svelte";
     import MdiGitHub from "virtual:icons/mdi/github";
     import MdiYoutube from "virtual:icons/mdi/youtube";
     import MdiLinkedIn from "virtual:icons/mdi/linkedin";
     import MdiBell from "virtual:icons/mdi/bell";
     import MdiChartLine from "virtual:icons/mdi/chart-line";
+    import { authorName } from "$lib/constant/constant";
 
     const randomLine = wolfPoems[Math.floor(Math.random() * wolfPoems.length)];
     export let data;
@@ -25,25 +24,6 @@
         }
     };
 
-    // pagination configuration
-    const articlesPerPage = 5;
-    let currentPage = 1;
-    const totalPages = Math.ceil(articles.length / articlesPerPage);
-
-    let articlesToDisplay: Article[];
-
-    const updateDisplayedArticles = () => {
-        const start = (currentPage - 1) * articlesPerPage;
-        const end = start + articlesPerPage;
-        articlesToDisplay = articles.slice(start, end);
-    };
-
-    const onPageChange = (newPage: number) => {
-        if (newPage >= 1 && newPage <= totalPages) currentPage = newPage;
-        updateDisplayedArticles();
-    };
-
-    updateDisplayedArticles();
     typeWriter();
 </script>
 
@@ -57,20 +37,9 @@
 <div class="flex justify-center">
     <!-- blog list container  -->
     <div class="md:w-2/3 flex flex-col gap-3 items-center mb-2">
-        {#each articlesToDisplay as article (article.id)}
+        {#each articles as article (article.id)}
             <CustomCard {article} />
         {/each}
-        <Pagination
-            normalClass="!bg-primary-900 border-transparent text-textPrimary-200 hover:text-textPrimary-400"
-            on:previous={(e) => {
-                e.preventDefault();
-                onPageChange(currentPage - 1);
-            }}
-            on:next={(e) => {
-                e.preventDefault();
-                onPageChange(currentPage + 1);
-            }}
-        />
     </div>
     <!-- other info container  -->
     <div class="w-1/3 md:flex flex-col gap-3 hidden">
@@ -79,7 +48,7 @@
         >
             <div class="flex flex-col items-center pb-4">
                 <Avatar size="lg" src="./images/wolfy.png" />
-                <p class="text-lg text-primary-200 mt-1">lym8356</p>
+                <p class="text-lg text-primary-200 mt-1">{authorName}</p>
                 <div
                     class="flex w-full mt-3 justify-evenly text-textPrimary-200 mr-3"
                 >
@@ -113,8 +82,7 @@
                 <span class="text-textPrimary-300 ml-2">Notification</span>
             </div>
             <p class="text-left mt-1 text-textPrimary-100">
-                This is the first release of the website, there are many bugs.
-                If there are areas that can be improved, please leave a message.
+                {data.notification.content}
             </p>
         </Card>
         <Card

@@ -7,7 +7,8 @@ import type { Article, Comment } from "../../../lib/types";
 
 export async function load({ fetch, params }) {
     try {
-        const article: Article = await fetchJson(`Article/${params.slug}`, fetch);
+        const {data} = await fetchJson(`Article/${params.slug}`, fetch);
+        const article: Article = data;
         let comments: Comment[] = article.comments;
         const parsedHtml = await compile(article.content);
         if (parsedHtml) {
