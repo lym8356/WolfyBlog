@@ -11,7 +11,7 @@
 <CustomTitle titleString={navigationLinks.Projects} />
 
 <CustomContainer>
-    <div class="grid md:grid-cols-2 grid-cols--1 gap-3">
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-3">
         {#each projects as project}
             <Card
                 href={project.link}

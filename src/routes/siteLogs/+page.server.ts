@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ fetch }) {
     try {
-        let siteLogs: SiteLog[] = await fetchJson('SiteLog', fetch);
+        let siteLogs: SiteLog[] = (await fetchJson('SiteLog', fetch)).data;
         // sort according to descending order
         siteLogs = siteLogs.sort((a, b) =>
             new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());

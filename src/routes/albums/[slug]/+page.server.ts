@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ fetch, params }) {
     try {
-        const album: Album = await fetchJson(`Album/${params.slug}`, fetch);
+        const album: Album = (await fetchJson(`Album/${params.slug}`, fetch)).data;
         const albumPhotos = album.albumPhotos.map((photo, index) => ({
             alt: photo.id,
             src: photo.url,

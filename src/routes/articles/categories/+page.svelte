@@ -28,7 +28,7 @@
 <CustomTitle titleString="Categories" />
 
 <CustomContainer>
-    <div class="grid md:grid-cols-5 gap-2">
+    <div class="grid lg:grid-cols-5 grid-cols-2 gap-2">
         {#each categories as category}
             <Button
                 outline

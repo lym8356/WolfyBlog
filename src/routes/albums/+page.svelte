@@ -14,7 +14,7 @@
     <div class="grid md:grid-cols-2 grid-cols--1 gap-3">
         {#each albums as album}
             <Card
-                href="/album/{album.id}"
+                href="/albums/{album.id}"
                 img={album.cover}
                 horizontal
                 class="border-none overflow-hidden md:h-44 bg-primary-100 hover:bg-textPrimary-100"

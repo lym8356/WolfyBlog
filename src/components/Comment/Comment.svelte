@@ -2,9 +2,19 @@
     import type { Comment } from "../../lib/types";
     import MdiComment from "virtual:icons/mdi/comment-text";
     import Reply from "./Reply.svelte";
+    import CommentBox from "./CommentBox.svelte";
+    import { blur } from "svelte/transition";
 
     export let comment: Comment;
-    const replies: Comment[] = comment.replies;
+    export let replyToArticleId: string | null = null;
+
+    $: replies = comment.replies;
+    
+    let showCommentBox = false;
+
+    const toggleCommentBox = () => {
+        showCommentBox = !showCommentBox;
+    };
 </script>
 
 <div class="flex">
@@ -39,8 +49,19 @@
             class="my-5 flex items-center uppercase tracking-wide font-bold text-sm text-textPrimary-300 hover:underline"
         >
             <MdiComment />
-            <button type="button" class="mb-1 ml-1"> Reply </button>
+            <button type="button" class="mb-1 ml-1" on:click={toggleCommentBox}>
+                {showCommentBox ? "Cancel" : "Reply"}
+            </button>
         </div>
+
+        {#if showCommentBox}
+            <div
+                transition:blur={{ duration: 500 }}
+                
+            >
+                <CommentBox parentCommentId={comment.id} replyToArticleId={replyToArticleId} />
+            </div>
+        {/if}
 
         <div class="space-y-4">
             {#each replies as reply (reply.id)}

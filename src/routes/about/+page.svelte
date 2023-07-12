@@ -2,13 +2,13 @@
     import { TabItem, Tabs } from "flowbite-svelte";
     import CustomTitle from "../../components/CustomTitle.svelte";
     import { navigationLinks } from "$lib/constant/constant";
+    import CustomContainer from "../../components/CustomContainer.svelte";
 
     export let data;
 </script>
 
 <CustomTitle titleString={navigationLinks.About} />
-
-<div class="mx-auto max-w-screen-lg mt-8 mb-8">
+<CustomContainer>
     <Tabs
         style="full"
         contentClass="mt-4"
@@ -40,7 +40,7 @@
             </div>
         </TabItem>
     </Tabs>
-</div>
+</CustomContainer>
 
 <style>
     .prose {

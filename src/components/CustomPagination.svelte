@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Pagination } from "flowbite-svelte";
+    import { ChevronLeft, ChevronRight, Pagination } from "flowbite-svelte";
     import { goto } from "$app/navigation";
     import type { PaginationHeaderData } from "$lib/types";
 
@@ -14,6 +14,7 @@
     export let searchTerm: string | null = null;
     export let searchCategory: string | null = null;
     export let searchTags: string | null = null;
+    export let contentType: string | null = null;
 
     function changePage(direction: "previous" | "next") {
         let params = new URLSearchParams();
@@ -29,7 +30,14 @@
         // Stringify the params
         let searchQuery = params.toString() ? `&${params.toString()}` : "";
 
-        let pageURL = searchCategory ? "/articles/categories" : searchTags ? "/articles/tags" : "/articles";
+        let pageURL = "/articles"; // default to "articles"
+        if (contentType === "discussion") {
+            pageURL = "/discussion";
+        } else if (searchCategory) {
+            pageURL = "/articles/categories";
+        } else if (searchTags) {
+            pageURL = "/articles/tags";
+        }
 
         if (direction === "next" && paginationData?.nextPageLink) {
             goto(
@@ -54,7 +62,15 @@
     {pages}
     on:previous={() => changePage("previous")}
     on:next={() => changePage("next")}
-    activeClass="text-textPrimary-100 border border-primary-300 bg-primary-400 hover:bg-textPrimary-100 hover:text-textPrimary-800"
-    normalClass="text-primary-800 bg-white hover:bg-textPrimary-100 hover:text-textPrimary-800"
-    class="mt-1"
-/>
+    activeClass="text-textPrimary-100 border border-primary-300 bg-primary-100 hover:!bg-textPrimary-100 hover:text-textPrimary-800"
+    normalClass="hover:bg-textPrimary-100"
+    class="mt-1 text-textPrimary-400"
+    icon
+>
+    <svelte:fragment slot="prev">
+        <ChevronLeft class="w-5 h-5 text-primary-900" />
+    </svelte:fragment>
+    <svelte:fragment slot="next">
+        <ChevronRight class="w-5 h-5 text-primary-900" />
+    </svelte:fragment>
+</Pagination>

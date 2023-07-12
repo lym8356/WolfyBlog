@@ -3,13 +3,11 @@
 	import "prismjs/themes/prism-okaidia.min.css";
 	import Toc from 'svelte-toc';
 	import SingleComment from "../../../components/Comment/Comment.svelte";
-    import { Pagination } from "flowbite-svelte";
     import CommentBox from "../../../components/Comment/CommentBox.svelte";
 
-	const { article, comments } = data;
+	$: ({ article, comments } = data);
 
 	// only show main comments not replies
-	let mainComments = comments.filter((c) => c.parentCommentId == null);
 </script>
 
 <div class="pt-8 pb-8 lg:pt-16 lg:pb-16">
@@ -24,32 +22,37 @@
 			</div>
 		</div>
 		<hr class="border-dashed border-textPrimary-400" />
-		<CommentBox />
+
+		<div class="mx-4">
+			<CommentBox replyToArticleId={article.id} />
+		</div>
+		
 		<div class="py-4 lg:py-8 antialiased mx-auto max-w-screen-md space-y-4">
 			<h3 class="mb-4 text-lg font-semibold text-textPrimary-400 toc-exclude">
 				{comments.length}
 				{comments.length == 1 ? "Comment" : "Comments"}
 			</h3>
-			{#each mainComments as comment}
-				<SingleComment {comment} />
+			{#each comments as comment}
+				<SingleComment {comment} replyToArticleId={article.id} />
 			{/each}
-			<Pagination
+			<!-- <Pagination
 				normalClass="!bg-primary-700 border-transparent text-textPrimary-200 hover:text-textPrimary-400"
 				on:previous={(e) => {
 					e.preventDefault();
-					// onPageChange(currentPage - 1);
+					onPageChange(currentPage - 1);
 				}}
 				on:next={(e) => {
 					e.preventDefault();
-					// onPageChange(currentPage + 1);
+					onPageChange(currentPage + 1);
 				}}
-			/>
+			/> -->
 		</div>
 	</section>
 	<section
 		class="basis-1/3 fixed top-40 right-14"
 	>
 		<Toc
+			warnOnEmpty = {false}
 			title = ""
 			--toc-max-height = "50vh"
 			--toc-desktop-max-width = "15vw"

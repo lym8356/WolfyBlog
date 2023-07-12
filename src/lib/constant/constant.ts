@@ -13,14 +13,21 @@ export const youtube = "https://www.youtube.com/@luadam1833/videos";
 
 export const navigationLinks = {
     Home: "Home",
+    HomeURL: "/",
     Articles: "Articles",
+    ArticlesURL: "/articles",
     Albums: "Albums",
-    Comments: "Comments",
+    AlbumURL: "/albums",
+    Discussion: "Discussion",
+    DiscussionURL: "/discussion",
     SiteLogs: "Site Logs",
+    SiteLogURL: "/siteLogs",
     Projects: "Projects",
-    About: "About"
+    ProjectURL: "/projects",
+    About: "About",
+    AboutURL: "/about"
 }
 
 
-export const defaultPageSize = 10;
+export const defaultPageSize = 5;
 export const defaultPageNumber = 1;

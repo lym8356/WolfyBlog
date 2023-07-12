@@ -6,7 +6,7 @@ import { compile } from "mdsvex";
 
 export async function load({ fetch }) {
     try {
-        const aboutPages: AboutPage[] = await fetchJson('AboutPage', fetch);
+        const aboutPages: AboutPage[] = (await fetchJson('AboutPage', fetch)).data;
 
         aboutPages.forEach(async about => {
             const parsedHtml = await compile(about.content);

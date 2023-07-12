@@ -9,6 +9,12 @@ type FetchArticlesParams = {
     fetch: typeof fetch
 };
 
+type FetchCommentsParams = {
+    pageNumber: number,
+    pageSize: number,
+    fetch: typeof fetch
+}
+
 export async function fetchArticles({ pageNumber, pageSize, searchTerm, searchCategory, searchTags, fetch }: FetchArticlesParams) {
     const params = new URLSearchParams({
         pageNumber: pageNumber.toString(),
@@ -29,17 +35,29 @@ export async function fetchArticles({ pageNumber, pageSize, searchTerm, searchCa
     return fetchResponse;
 }
 
+export async function fetchDiscussionComments({ pageNumber, pageSize }: FetchCommentsParams) {
+    const params = new URLSearchParams({
+        pageNumber: pageNumber.toString(),
+        pageSize: pageSize.toString()
+    });
 
+    let requestURL = `comment?excludeRepliesToArticles=true&${params}`;
+    const fetchResponse = await fetchJson(requestURL, fetch);
+    return fetchResponse;
+}
+
+// to use with flowbite-svelte pagination component
 export function generatePages(options: {
     currentPage?: number,
     totalPages?: number,
     searchTerm?: string,
     searchCategory?: string,
     searchTags?: string,
+    contentType?: string
 })
     : Array<{ name: string, href: string, active: boolean }> {
 
-    const { currentPage, totalPages, searchTerm, searchCategory, searchTags } = options;
+    const { currentPage, totalPages, searchTerm, searchCategory, searchTags, contentType } = options;
 
     if (!totalPages) return [];
     let startPage = Math.max(1, currentPage ? currentPage - 2 : 1);
@@ -66,7 +84,14 @@ export function generatePages(options: {
         searchParamString += `&tags=${searchTags}`;
     }
 
-    let pageURL = searchCategory ? "/articles/categories" : searchTags ? "/articles/tags" : "/articles";
+    let pageURL = "/articles";  // default to "articles"
+    if (contentType === "discussion") {
+        pageURL = "/discussion";
+    } else if (searchCategory) {
+        pageURL = "/articles/categories";
+    } else if (searchTags) {
+        pageURL = "/articles/tags";
+    }
     // build the pages array
     return Array.from({ length: endPage - startPage + 1 }, (_, i) => {
         let pageNumber = startPage + i;

@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ fetch }) {
     try {
-        const projects: Project[] = await fetchJson('Project', fetch);
+        const projects: Project[] = (await fetchJson('Project', fetch)).data;
         
         return { projects };
     } catch (e) {

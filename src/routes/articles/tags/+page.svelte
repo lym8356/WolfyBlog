@@ -48,7 +48,7 @@
 <CustomTitle titleString="Tags" />
 
 <CustomContainer>
-    <div class="grid md:grid-cols-8 md:gap-2 grid-cols-3 gap-1">
+    <div class="grid lg:grid-cols-8 lg:gap-2 grid-cols-3 gap-1">
         {#each tags as tag}
             <Button
                 pill

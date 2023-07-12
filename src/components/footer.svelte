@@ -32,10 +32,12 @@
                 <FooterLinkGroup
                     class="items-center text-sm text-textPrimary-200 sm:mb-0 mt-2 lg:mt-0 md:mt-0"
                 >
-                    <FooterLink liClass="mb-2" href="/article">{navigationLinks.Articles}</FooterLink>
-                    <FooterLink liClass="mb-2" href="/album">{navigationLinks.Albums}</FooterLink>
-                    <FooterLink liClass="mb-2" href="/comment">{navigationLinks.Comments}</FooterLink>
-                    <FooterLink href="/">Projects</FooterLink>
+                    <FooterLink liClass="mb-2" href={navigationLinks.ArticlesURL}>
+                        {navigationLinks.Articles}
+                    </FooterLink>
+                    <FooterLink liClass="mb-2" href={navigationLinks.AlbumURL}>{navigationLinks.Albums}</FooterLink>
+                    <FooterLink liClass="mb-2" href={navigationLinks.DiscussionURL}>{navigationLinks.Discussion}</FooterLink>
+                    <FooterLink href={navigationLinks.ProjectURL}>{navigationLinks.Projects}</FooterLink>
                 </FooterLinkGroup>
             </div>
             <div>
@@ -47,9 +49,9 @@
                 <FooterLinkGroup
                     class="items-center text-sm text-textPrimary-200 sm:mb-0 mt-2 lg:mt-0 md:mt-0"
                 >
-                    <FooterLink liClass="mb-2" href="/">{navigationLinks.Home}</FooterLink>
-                    <FooterLink liClass="mb-2" href="/about">{navigationLinks.About}</FooterLink>
-                    <FooterLink href="/siteLog">{navigationLinks.SiteLogs}</FooterLink>
+                    <FooterLink liClass="mb-2" href={navigationLinks.HomeURL}>{navigationLinks.Home}</FooterLink>
+                    <FooterLink liClass="mb-2" href={navigationLinks.AboutURL}>{navigationLinks.About}</FooterLink>
+                    <FooterLink href={navigationLinks.SiteLogURL}>{navigationLinks.SiteLogs}</FooterLink>
                 </FooterLinkGroup>
             </div>
             <div>

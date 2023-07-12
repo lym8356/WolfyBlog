@@ -46,6 +46,14 @@ export type Comment = {
     replies: Comment[];
 }
 
+export type CommentFormValues = {
+    content: string;
+    commenterUsername: string;
+    commenterEmail: string;
+    parentCommentId: string | null;
+    replyToArticleId: string | null;
+}
+
 export type SiteLog = {
     id: number;
     description: string;

@@ -11,7 +11,7 @@
 
     const randomLine = wolfPoems[Math.floor(Math.random() * wolfPoems.length)];
     export let data;
-    const { articles, categories, tags } = data;
+    $: ({ articles, categories, tags, articleCount } = data);
 
     // typing effect
     let displayText = "";
@@ -34,15 +34,15 @@
     </p>
 </div>
 
-<div class="flex justify-center">
+<div class="flex justify-center space-x-5">
     <!-- blog list container  -->
-    <div class="md:w-2/3 flex flex-col gap-3 items-center mb-2">
+    <div class="lg:w-2/5 md:w-3/5 flex flex-col gap-3 items-center mb-2">
         {#each articles as article (article.id)}
             <CustomCard {article} />
         {/each}
     </div>
     <!-- other info container  -->
-    <div class="w-1/3 md:flex flex-col gap-3 hidden">
+    <div class="lg:w-1/4 md:w-1/3 md:flex flex-col gap-3 hidden">
         <Card
             class="max-w-2xl w-full !bg-primary-900 border-transparent hover:bg-primary-800 p-2 !pb-0"
         >
@@ -54,7 +54,7 @@
                 >
                     <div>
                         <p>Articles</p>
-                        <p>{articles.length}</p>
+                        <p>{articleCount}</p>
                     </div>
                     <div>
                         <p>Categories</p>
@@ -106,9 +106,11 @@
         <Card
             class="max-w-2xl w-full !bg-primary-900 border-transparent hover:bg-primary-800 py-2 mb-2"
         >
-            <div class="flex lg:space-x-2">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-2">
                 {#each tags as tag}
-                    <Badge large color="dark" class="w-1/4 md:w-1/5">{tag.title}</Badge>
+                    <Badge large color="dark">
+                        {tag.title}
+                    </Badge>
                 {/each}
             </div>
         </Card>

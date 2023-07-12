@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { Comment } from "$lib/types";
     import { onMount } from "svelte";
-    import { comment } from "svelte/internal";
 
     export let reply: Comment;
     export let replies: Comment[] = [];
@@ -11,6 +10,7 @@
             replies = reply.replies;
         }
     });
+
 </script>
 
 <div class="flex">
@@ -35,7 +35,7 @@
                 Unknown date
             {/if}
         </span>
-        <p class="text-sm text-textPrimary-200">
+        <p class="text-sm text-textPrimary-200 break-all">
             {reply.content}
         </p>
     </div>
