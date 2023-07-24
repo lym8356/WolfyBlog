@@ -74,7 +74,7 @@
     />
     <A
         href={siteGitHub}
-        aClass="block text-xs text-center text-textPrimary-400 hover:underline"
+        aClass="block text-xs text-center !text-textPrimary-400 hover:underline"
         >Source Code</A
     >
     <FooterCopyright

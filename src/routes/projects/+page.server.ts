@@ -1,5 +1,5 @@
 import type { Project } from '$lib/types/index.js';
-import { fetchJson } from '$lib/util/agent';
+import { fetchJson } from '$lib/util/api';
 import { error } from '@sveltejs/kit';
 
 
@@ -9,6 +9,10 @@ export async function load({ fetch }) {
         
         return { projects };
     } catch (e) {
-        throw error(404, (e as Error).message);
+        if((e as Error).message.toLowerCase().includes("too many")){
+            throw error(429, (e as Error).message);
+        }else{
+            throw error(500, (e as Error).message);
+        }
     }
 }

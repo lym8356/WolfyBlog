@@ -17,7 +17,7 @@
     <div class="flex-shrink-0 mr-3">
         <img
             class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+            src="/images/user.png"
             alt="User"
         />
     </div>
@@ -29,7 +29,8 @@
                     year: "numeric",
                     month: "long",
                     day: "numeric",
-                    hour: "numeric"
+                    hour: "numeric",
+                    minute: "numeric"
                 })}
             {:else}
                 Unknown date

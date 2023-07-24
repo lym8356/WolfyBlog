@@ -12,6 +12,7 @@ export type Category = {
 export type Article = {
     id: string;
     title: string;
+    titleSlug: string;
     content: string;
     category: Category;
     articleTags: Tag[];
@@ -81,8 +82,13 @@ export type Fetch = (
 
 export type FetchResponse = {
     data: any,
-    headers: Headers,
+    headers: Headers
 }
+
+// export type FetchError = {
+//     status: string,
+//     message: string
+// }
 
 export type PaginationHeaderData = {
     previousPageLink: string | null;

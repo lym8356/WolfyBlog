@@ -1,5 +1,5 @@
 import { error } from "@sveltejs/kit";
-import { fetchJson } from "../lib/util/agent";
+import { fetchJson } from "../lib/util/api";
 import type { AboutPage, Article, Category, PaginationHeaderData, Tag } from "../lib/types";
 
 
@@ -20,6 +20,10 @@ export async function load({ fetch }) {
         const notification: AboutPage = (await fetchJson('AboutPage/GetNotification')).data;
         return { articles, categories, tags, notification, articleCount };
     } catch (e) {
-        throw error(404, (e as Error).message);
+        if((e as Error).message.toLowerCase().includes("too many")){
+            throw error(429, (e as Error).message);
+        }else{
+            throw error(500, (e as Error).message);
+        }
     }
 }

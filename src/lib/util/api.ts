@@ -1,15 +1,16 @@
+import { backendURL } from "../constant/constant";
 import type { Fetch, FetchResponse } from "../types";
-
-let url = "http://localhost:21777/api/";
 
 export const fetchJson = async (endPoint: string, fetchSve: Fetch = fetch): Promise<FetchResponse> => {
     // console.log(url + endPoint);
-    const response = await fetchSve(url + endPoint);
+    const response = await fetchSve(backendURL + endPoint);
     if (!response.ok) {
         // response is not ok, parse the error message from the response body
+        let errorStatus = '';
         let errorMessage = 'Unknown error';
         try {
             const errorBody = await response.json();
+            errorStatus = errorBody.status;
             errorMessage = errorBody.message;
         } catch (e) {
             // If response body couldn't be parsed, use the status text as the error message
@@ -25,7 +26,7 @@ export const fetchJson = async (endPoint: string, fetchSve: Fetch = fetch): Prom
 
 
 export const postJson = async (endpoint: string, body: any): Promise<FetchResponse> => {
-    const response = await fetch(url + `${endpoint}`, {
+    const response = await fetch(backendURL + `${endpoint}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +44,7 @@ export const postJson = async (endpoint: string, body: any): Promise<FetchRespon
         throw new Error(errorMessage);
     }
 
-    const data = await response.json();
+    const { data } = await response.json();
     const headers = response.headers;
     return { data, headers };
 }

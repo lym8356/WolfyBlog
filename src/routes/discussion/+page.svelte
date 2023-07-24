@@ -7,6 +7,8 @@
     import { page } from "$app/stores";
     import CustomTitle from "../../components/CustomTitle.svelte";
     import { navigationLinks } from "$lib/constant/constant";
+    import { invalidateAll } from "$app/navigation";
+    import { setContext } from "svelte";
 
     export let data;
     $: ({ paginationData, commentsCount } = data);
@@ -22,6 +24,12 @@
             active: hrefValue === activeUrl,
         };
     });
+
+    setContext('refresh', refreshData);
+
+    function refreshData(){
+        invalidateAll();
+    }
 </script>
 
 <CustomTitle titleString={navigationLinks.Discussion} />

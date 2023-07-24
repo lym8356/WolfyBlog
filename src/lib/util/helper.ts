@@ -1,4 +1,5 @@
-import { fetchJson } from "./agent";
+import { fetchJson } from "./api";
+
 
 type FetchArticlesParams = {
     pageNumber: number,
@@ -19,7 +20,7 @@ export async function fetchArticles({ pageNumber, pageSize, searchTerm, searchCa
     const params = new URLSearchParams({
         pageNumber: pageNumber.toString(),
         pageSize: pageSize.toString(),
-        fields: 'id,title,createdAt',
+        fields: 'title,createdAt,titleSlug',
         ...(searchTerm && { keyword: searchTerm }),
         ...(searchCategory && { category: searchCategory }),
         ...(searchTags && { tags: searchTags }),

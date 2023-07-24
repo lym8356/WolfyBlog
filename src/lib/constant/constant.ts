@@ -28,6 +28,6 @@ export const navigationLinks = {
     AboutURL: "/about"
 }
 
-
-export const defaultPageSize = 5;
+export const backendURL = "http://localhost:21777/api/";
+export const defaultPageSize = 10;
 export const defaultPageNumber = 1;

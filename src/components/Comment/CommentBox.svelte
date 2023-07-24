@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { CommentFormValues } from "$lib/types";
-    import { postJson } from "$lib/util/agent";
+    import { postJson } from "$lib/util/api";
     import {
         Button,
         ButtonGroup,
@@ -16,6 +16,7 @@
     import { required, email, max } from "svelte-forms/validators";
     import MdiSuccess from "virtual:icons/mdi/check-circle";
     import MdiError from "virtual:icons/mdi/alert-circle";
+    import { createEventDispatcher, getContext } from "svelte";
 
     export let parentCommentId: string | null = null;
     export let replyToArticleId: string | null = null;
@@ -115,9 +116,7 @@
             showToast();
             formObject.validate();
             submittedOnce = false;
-            // if (replyToArticleId){
-            //     invalidate('comments:refresh-comments');
-            // }
+            refresh();
         } catch (e) {
             console.log(e);
             formObject.clear();
@@ -127,6 +126,9 @@
             submittedOnce = false;
         }
     }
+
+    const refresh:Function = getContext('refresh');
+
 </script>
 
 <section class="mb-6 mt-3">

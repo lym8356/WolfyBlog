@@ -1,19 +1,18 @@
 import { error } from "@sveltejs/kit";
-import { fetchJson } from "../../../lib/util/agent";
+import { fetchJson } from "../../../lib/util/api";
 import { compile } from "mdsvex";
 import type { Article, Comment } from "../../../lib/types";
 
 
 
-export async function load({ fetch, params, depends }) {
-    depends('comments:refresh-comments');
+export async function load({ fetch, params }) {
     try {
-        const {data} = await fetchJson(`Article/${params.slug}`, fetch);
+        const { data } = await fetchJson(`Article/Slug/${params.slug}`, fetch);
         const article: Article = data;
         let comments: Comment[] = article.comments;
 
         // filter out replies
-        if(comments){
+        if (comments) {
             comments = comments.filter((c) => c.parentCommentId == null);
         }
 
@@ -26,6 +25,10 @@ export async function load({ fetch, params, depends }) {
         }
         return { article, comments };
     } catch (e) {
-        throw error(404, (e as Error).message);
+        if((e as Error).message.toLowerCase().includes("too many")){
+            throw error(429, (e as Error).message);
+        }else{
+            throw error(500, (e as Error).message);
+        }
     }
 }

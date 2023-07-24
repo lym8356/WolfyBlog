@@ -15,13 +15,14 @@
     const toggleCommentBox = () => {
         showCommentBox = !showCommentBox;
     };
+
 </script>
 
 <div class="flex">
     <div class="flex-shrink-0 mr-3">
         <img
             class="mt-2 w-8 h-8 rounded-full sm:w-10 sm:h-10"
-            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+            src="/images/user.png"
             alt="User"
         />
     </div>
@@ -37,6 +38,7 @@
                     month: "long",
                     day: "numeric",
                     hour: "numeric",
+                    minute: "numeric"
                 })}
             {:else}
                 Unknown date

@@ -10,7 +10,7 @@
     {#each articles as article}
         <TableBodyRow
             class="!bg-primary-800 hover:cursor-pointer rounded-lg hover:!bg-primary-700"
-            on:click={() => goto(`/articles/${article.id}`)}
+            on:click={() => goto(`/articles/${article.titleSlug}`)}
         >
             <TableBodyCell class="text-center text-textPrimary-200 text-lg"
                 >{article.title}
