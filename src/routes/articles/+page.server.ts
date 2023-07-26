@@ -1,4 +1,4 @@
-import { defaultPageNumber, defaultPageSize } from "$lib/constant/constant";
+import { defaultArticleSearchFields, defaultPageNumber, defaultPageSize } from "$lib/constant/constant";
 import type { Article, PaginationHeaderData } from "$lib/types";
 import { fetchArticles, generatePages } from "$lib/util/helper";
 import { error } from "@sveltejs/kit";
@@ -15,6 +15,7 @@ export async function load({ fetch, url }) {
             pageNumber,
             pageSize,
             searchTerm,
+            fields: defaultArticleSearchFields,
             fetch,
         });
 

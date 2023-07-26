@@ -1,3 +1,5 @@
+import { defaultPageNumber, defaultPageSize } from "$lib/constant/constant";
+import type { Fetch } from "$lib/types";
 import { fetchJson } from "./api";
 
 
@@ -7,6 +9,7 @@ type FetchArticlesParams = {
     searchTerm?: string,
     searchCategory?: string,
     searchTags?: string,
+    fields?: string,
     fetch: typeof fetch
 };
 
@@ -16,11 +19,11 @@ type FetchCommentsParams = {
     fetch: typeof fetch
 }
 
-export async function fetchArticles({ pageNumber, pageSize, searchTerm, searchCategory, searchTags, fetch }: FetchArticlesParams) {
+export async function fetchArticles({ pageNumber, pageSize, searchTerm, searchCategory, searchTags, fields, fetch }: FetchArticlesParams) {
     const params = new URLSearchParams({
         pageNumber: pageNumber.toString(),
         pageSize: pageSize.toString(),
-        fields: 'title,createdAt,titleSlug',
+        ...(fields && { fields: fields }),
         ...(searchTerm && { keyword: searchTerm }),
         ...(searchCategory && { category: searchCategory }),
         ...(searchTags && { tags: searchTags }),
@@ -98,4 +101,10 @@ export function generatePages(options: {
         let pageNumber = startPage + i;
         return { name: pageNumber.toString(), href: `${pageURL}?pageNumber=${pageNumber}${searchParamString}`, active: false }
     });
+}
+
+
+export const fetchHomePageData = (fetch: Fetch) => {
+    const articles = fetchArticles({pageNumber:defaultPageNumber, pageSize:defaultPageSize, fetch});
+    return {data: {articles}}
 }

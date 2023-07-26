@@ -18,8 +18,10 @@ export async function load({ fetch, params }) {
 
         const parsedHtml = await compile(article.content);
 
+        // remove the extra @html
         if (parsedHtml) {
-            article.content = parsedHtml.code;
+            article.content = parsedHtml.code.replace(/>{@html `<code class="language-/g, '><code class="language-')
+			.replace(/<\/code>`}<\/pre>/g, '</code></pre>');
         } else {
             article.content = "Parsed Error";
         }

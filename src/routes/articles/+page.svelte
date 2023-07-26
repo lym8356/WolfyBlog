@@ -42,6 +42,7 @@
         inputError = false;
         goto("/articles");
     }
+
 </script>
 
 <CustomTitle titleString={navigationLinks.Articles} />

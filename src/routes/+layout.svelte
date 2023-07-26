@@ -5,6 +5,7 @@
     import "../styles/global.css";
 </script>
 
+
 <div class="app-wrapper layout">
     <Header />
     <main>

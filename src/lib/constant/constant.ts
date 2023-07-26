@@ -1,6 +1,10 @@
 
 export const siteName = "WoflyBlog";
 
+export const siteUrl = "http://127.0.0.1:5173/";
+
+export const siteDescription = "Welcome to my personal blog, a digital chronicle of my journey as a developer. Here, I share challenges faced and conquered in my career and studies, turning obstacles into lessons. This space serves as a testament to my growth and a resource for fellow coders. Dive in to discover my story, experiences, and the insights gathered along the way to competence. Welcome to the journey.";
+
 export const authorName = "lym8356";
 
 export const adminSiteUrl = "http://localhost:3000";
@@ -31,3 +35,4 @@ export const navigationLinks = {
 export const backendURL = "http://localhost:21777/api/";
 export const defaultPageSize = 10;
 export const defaultPageNumber = 1;
+export const defaultArticleSearchFields = "title,titleSlug,createdAt";

@@ -7,11 +7,13 @@
     import MdiLinkedIn from "virtual:icons/mdi/linkedin";
     import MdiBell from "virtual:icons/mdi/bell";
     import MdiChartLine from "virtual:icons/mdi/chart-line";
-    import { authorName } from "$lib/constant/constant";
+    import { authorName, siteDescription, siteName, siteUrl } from "$lib/constant/constant";
 
-    const randomLine = wolfPoems[Math.floor(Math.random() * wolfPoems.length)];
+
     export let data;
     $: ({ articles, categories, tags, articleCount } = data);
+
+    const randomLine = wolfPoems[Math.floor(Math.random() * wolfPoems.length)];
 
     // typing effect
     let displayText = "";
@@ -26,6 +28,15 @@
 
     typeWriter();
 </script>
+
+
+<svelte:head>
+    <title>{siteName}</title>
+    <meta content={siteName} property="og:title" />
+    <meta content={siteUrl} property="og:url" />
+	<meta content={siteDescription} property="og:description" />
+	<meta content={siteName} property="og:site_name" />
+</svelte:head>
 
 <div class="flex items-center justify-center h-screen">
     <p class="md:w-2/3 text-textPrimary-100 md:text-2xl text-sm">

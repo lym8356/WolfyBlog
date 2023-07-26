@@ -10,6 +10,11 @@
 	// only show main comments not replies
 </script>
 
+<svelte:head>
+	<title>{article.title}</title>
+	<meta content={article.titleSlug} property="og:title" />
+</svelte:head>
+
 <div class="pt-8 pb-8 lg:pt-16 lg:pb-16">
 	<section
 		class="p-2 mx-auto max-w-screen-lg bg-primary-900 rounded-2xl basis-3/4"
