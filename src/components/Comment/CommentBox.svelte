@@ -16,7 +16,7 @@
     import { required, email, max } from "svelte-forms/validators";
     import MdiSuccess from "virtual:icons/mdi/check-circle";
     import MdiError from "virtual:icons/mdi/alert-circle";
-    import { createEventDispatcher, getContext } from "svelte";
+    import { getContext } from "svelte";
 
     export let parentCommentId: string | null = null;
     export let replyToArticleId: string | null = null;
@@ -57,9 +57,8 @@
             } else if ($formObject.hasError("email.not_an_email")) {
                 emailError = "Email format is invalid";
             } else if ($formObject.hasError("email.max")) {
-                emailError = "Email cannot be too long"
-            }
-            else {
+                emailError = "Email cannot be too long";
+            } else {
                 emailError = "";
             }
         }
@@ -118,7 +117,6 @@
             submittedOnce = false;
             refresh();
         } catch (e) {
-            console.log(e);
             formObject.clear();
             responseError = true;
             showToast();
@@ -127,8 +125,12 @@
         }
     }
 
-    const refresh:Function = getContext('refresh');
-
+    let refresh: Function = () => {};
+    if (replyToArticleId) {
+        refresh = getContext("refreshArticle");
+    } else {
+        refresh = getContext("refresh");
+    }
 </script>
 
 <section class="mb-6 mt-3">
@@ -220,7 +222,9 @@
                 <svelte:fragment slot="icon">
                     <MdiError color="red" class="text-xl" />
                 </svelte:fragment>
-                <span class="text-sm">There was an error. Please try again later</span>
+                <span class="text-sm"
+                    >There was an error. Please try again later</span
+                >
             </Toast>
         {/if}
     </div>

@@ -4,10 +4,16 @@
 	import Toc from 'svelte-toc';
 	import SingleComment from "../../../components/Comment/Comment.svelte";
     import CommentBox from "../../../components/Comment/CommentBox.svelte";
+    import { setContext } from "svelte";
+    import { invalidateAll } from "$app/navigation";
 
 	$: ({ article, comments } = data);
 
-	// only show main comments not replies
+	setContext('refreshArticle', refreshData);
+
+    function refreshData(){
+        invalidateAll();
+    }
 </script>
 
 <svelte:head>
