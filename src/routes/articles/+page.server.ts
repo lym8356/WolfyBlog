@@ -15,11 +15,12 @@ export async function load({ fetch, url }) {
             pageNumber,
             pageSize,
             searchTerm,
-            fields: defaultArticleSearchFields,
+            fields: defaultArticleSearchFields + ",isDraft",
             fetch,
         });
 
-        const articles: Article[] = fetchResponse.data;
+        let articles: Article[] = fetchResponse.data;
+        articles = articles.filter(a => a.isDraft == false);
         const headers = fetchResponse.headers;
 
         // Extract x-pagination header

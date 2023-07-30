@@ -36,7 +36,7 @@
 
 <CustomContainer>
     <div class="pt-8 pb-8 lg:pt-8 lg:pb-8">
-        <div class="text-textPrimary-200 text-lgcp mb-4">
+        <div class="text-textPrimary-200 text-lg mb-4">
             <p>Hi, I'm Adam Lu</p>
             <p>Welcome to my blog!</p>
             <p>Feel free to leave a message.</p>

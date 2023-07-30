@@ -9,14 +9,15 @@ export const prerender = true;
 export async function load({ fetch }) {
 
     try {
-        const articleData = (await fetchArticles({ pageNumber: defaultPageNumber, pageSize: 5, fields: "titleSlug,title,createdAt,content,category,id", fetch }));
+        const articleData = (await fetchArticles({ pageNumber: defaultPageNumber, pageSize: 5, fields: "titleSlug,title,createdAt,content,category,id, isDraft", fetch }));
         // Extract x-pagination header
         const paginationHeader = articleData.headers.get('x-pagination');
         let paginationData: PaginationHeaderData | null = null;
         if (paginationHeader) {
             paginationData = JSON.parse(paginationHeader);
         }
-        const articles: Article[] = articleData.data;
+        let articles: Article[] = articleData.data;
+        articles = articles.filter(a => a.isDraft == false);
         const articleCount = paginationData?.totalCount;
         const categories: Category[] = (await fetchJson('Category', fetch)).data;
         const tags: Tag[] = (await fetchJson('Tag', fetch)).data;
