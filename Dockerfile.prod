@@ -4,18 +4,18 @@ COPY package*.json .
 RUN npm ci
 COPY . .
 
-#ARG PUBLIC_API_URL
+ARG API_URL
 #ENV API_URL=${API_URL}
 
 RUN npm run build
 RUN npm prune --production
 
 FROM node:18-alpine
-#USER node:node
+USER node:node
 WORKDIR /app
-COPY --from=builder /app/build build/
-COPY --from=builder /app/node_modules node_modules/
-COPY package.json .
-EXPOSE 3000
+COPY --from=builder --chown=node:node /app/build build/
+COPY --from=builder --chown=node:node /app/node_modules node_modules/
+COPY --chown=node:node package.json .
+#EXPOSE 5050
 ENV NODE_ENV=production
 CMD [ "node", "build" ]
