@@ -1,12 +1,12 @@
 import { siteUrl } from "$lib/constant/constant";
-import type { Article, Category } from "$lib/types";
+import type { Article } from "$lib/types";
 import { fetchJson } from "$lib/util/api";
 
-export const prerender = true;
+// export const prerender = "auto";
 
 export async function GET() {
 
-    const articles: Article[] = (await fetchJson('Article')).data;
+    const articles: Article[] = (await fetchJson('article')).data;
 
     const pages = [
         'about',

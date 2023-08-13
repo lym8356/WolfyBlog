@@ -4,10 +4,8 @@ import type { AboutPage, Article, Category, PaginationHeaderData, Tag } from "..
 import { fetchArticles } from "$lib/util/helper";
 import { defaultPageNumber } from "$lib/constant/constant";
 
-export const prerender = true;
-
+// export const prerender = "auto";
 export async function load({ fetch }) {
-
     try {
         const articleData = (await fetchArticles({ pageNumber: defaultPageNumber, pageSize: 5, fields: "titleSlug,title,createdAt,content,category,id, isDraft", fetch }));
         // Extract x-pagination header

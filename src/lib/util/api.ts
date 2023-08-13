@@ -2,7 +2,7 @@ import { backendURL } from "../constant/constant";
 import type { Fetch, FetchResponse } from "../types";
 
 export const fetchJson = async (endPoint: string, fetchSve: Fetch = fetch): Promise<FetchResponse> => {
-    // console.log(url + endPoint);
+    // console.log(backendURL + endPoint);
     const response = await fetchSve(backendURL + endPoint);
     if (!response.ok) {
         // response is not ok, parse the error message from the response body
