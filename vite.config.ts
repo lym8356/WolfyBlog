@@ -1,13 +1,20 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { build, defineConfig } from 'vite';
 import Icons from 'unplugin-icons/vite'
-
 
 export default defineConfig({
 	plugins: [
-		sveltekit(),
+		[sveltekit()],
 		Icons({
 			compiler: 'svelte',
 		})
-	]
+	],
+	build:{
+		commonjsOptions: {
+			transformMixedEsModules: true
+		}
+	},
+	optimizeDeps: {
+		include: ['mdsvex']
+	}
 });

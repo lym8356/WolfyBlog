@@ -109,19 +109,22 @@
         };
 
         try {
-            const response = await postJson("Comment", comment);
-            formObject.clear();
+            await fetch("/kit_api/comments", {
+                method: "POST",
+                body: JSON.stringify(comment),
+                headers: { "content-type": "application/json" },
+            });
             responseError = false;
-            showToast();
-            formObject.validate();
-            submittedOnce = false;
-            refresh();
         } catch (e) {
-            formObject.clear();
             responseError = true;
+        } finally {
+            formObject.clear();
             showToast();
             formObject.validate();
             submittedOnce = false;
+            if (!responseError) {
+                refresh();
+            }
         }
     }
 

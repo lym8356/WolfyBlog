@@ -30,6 +30,7 @@ export async function load({ fetch, params }) {
         if((e as Error).message.toLowerCase().includes("too many")){
             throw error(429, (e as Error).message);
         }else{
+            console.log(e as Error);
             throw error(500, (e as Error).message);
         }
     }

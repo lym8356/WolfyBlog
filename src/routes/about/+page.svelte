@@ -5,6 +5,8 @@
     import CustomContainer from "../../components/CustomContainer.svelte";
 
     export let data;
+
+    $: aboutPages = data.aboutPages;
 </script>
 
 <CustomTitle titleString={navigationLinks.About} />
@@ -24,7 +26,7 @@
             <div
                 class="prose prose-invert lg:prose-lg text-justify text-textPrimary-400 prose-headings:text-textPrimary-200 bg-primary-900 rounded-2xl p-4"
             >
-                {@html data.aboutPages[0].content}
+                {@html aboutPages[0].content}
             </div>
         </TabItem>
         <TabItem
@@ -36,7 +38,7 @@
             <div
                 class="prose prose-invert lg:prose-lg text-justify text-textPrimary-400 prose-headings:text-textPrimary-200 bg-primary-900 rounded-2xl p-4"
             >
-                {@html data.aboutPages[1].content}
+                {@html aboutPages[1].content}
             </div>
         </TabItem>
     </Tabs>

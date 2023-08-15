@@ -10,9 +10,9 @@ export const authorName = "lym8356";
 export const siteUrl = "http://127.0.0.1:5173/";
 
 export const adminSiteUrl = "http://localhost:3000";
-// export const backendURL = "http://localhost:21777/api/";
+// export const backendURL = "http://localhost:21777/api";
 export const backendURL = env.PUBLIC_API_URL;
-console.log(backendURL)
+// console.log(backendURL)
 
 
 export const siteGitHub = "https://github.com/lym8356/WolfBlog";
