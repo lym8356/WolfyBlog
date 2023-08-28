@@ -7,9 +7,9 @@ export const authorName = "lym8356";
 
 
 // need to use environment variables 
-export const siteUrl = "http://127.0.0.1:5173/";
+export const siteUrl = env.PUBLIC_SITE_URL;
 
-export const adminSiteUrl = "http://localhost:3000";
+export const adminSiteUrl = env.PUBLIC_ADMIN_SITE_URL;
 // export const backendURL = "http://localhost:21777/api";
 export const backendURL = env.PUBLIC_API_URL;
 // console.log(backendURL)
@@ -20,6 +20,8 @@ export const siteGitHub = "https://github.com/lym8356/WolfBlog";
 export const gitHub = "https://github.com/lym8356";
 
 export const youtube = "https://www.youtube.com/@luadam1833/videos";
+
+export const linkedIn = "https://www.linkedin.com/in/adam-lu-3a1b49203"
 
 export const navigationLinks = {
     Home: "Home",

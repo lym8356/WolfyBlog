@@ -7,7 +7,7 @@
     import MdiLinkedIn from "virtual:icons/mdi/linkedin";
     import MdiBell from "virtual:icons/mdi/bell";
     import MdiChartLine from "virtual:icons/mdi/chart-line";
-    import { authorName, siteDescription, siteName, siteUrl } from "$lib/constant/constant";
+    import { authorName, gitHub, linkedIn, siteDescription, siteName, siteUrl, youtube } from "$lib/constant/constant";
 
 
     export let data;
@@ -80,9 +80,9 @@
             </div>
             <hr />
             <div class="flex w-full mt-2 justify-center pb-3 space-x-3">
-                <A><MdiGitHub class="text-xl text-textPrimary-100" /></A>
-                <A><MdiYoutube class="text-xl text-textPrimary-100" /></A>
-                <A><MdiLinkedIn class="text-xl text-textPrimary-100" /></A>
+                <A><MdiGitHub class="text-xl text-textPrimary-100" />{gitHub}</A>
+                <A><MdiYoutube class="text-xl text-textPrimary-100" />{youtube}</A>
+                <A><MdiLinkedIn class="text-xl text-textPrimary-100" />{linkedIn}</A>
             </div>
         </Card>
         <Card
